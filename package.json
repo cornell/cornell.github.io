@@ -1,0 +1,23 @@
+{
+  "name": "apropos",
+  "version": "1.0.0",
+  "description": "site web de l'association \"apropos\"",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cornell/cornell.github.io.git"
+  },
+  "author": "cornell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cornell/cornell.github.io/issues"
+  },
+  "homepage": "https://github.com/cornell/cornell.github.io",
+  "devDependencies": {
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^1.9.4"
+  }
+}
