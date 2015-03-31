@@ -15,28 +15,28 @@ var rev = require('gulp-rev');
 //        .pipe()
 //});
 
-gulp.task('watch', function(){
+gulp.task('watch', function () {
     gulp.watch('js/*.js', ['jshint']);
     gulp.watch('', []);
 });
 
 gulp.task('browser-sync', function () {
-   var files = ["index.html",
+    var files = ["index.html",
         "css/index.css",
         "js/*.js"
     ];
 
-   browserSync.init(files, {
-      server: {
-         baseDir: '.'
-      }
-   });
+    browserSync.init(files, {
+        server: {
+            baseDir: '.'
+        }
+    });
 });
 
-gulp.task('build-css', function(){
-    
+gulp.task('build-css', function () {
+
     gulp.src([
-        'vendor/mustache/mustache.min.js', 
+        'vendor/mustache/mustache.min.js',
         'js/app.js'
     ])
     .pipe(jshint('.jshintrc'))
@@ -45,9 +45,9 @@ gulp.task('build-css', function(){
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('lint-js', function(){
-    
-    gulp.src([         
+gulp.task('lint-js', function () {
+
+    gulp.src([
         'js/app.js'
     ])
     .pipe(rev())
@@ -56,10 +56,10 @@ gulp.task('lint-js', function(){
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', function(){
-    
-    gulp.src([         
-        'dist/app.js'
+gulp.task('build', function () {
+
+    gulp.src([
+        'src/js/app.js'
     ])
     .pipe(rev())
     .pipe(gulp.dest('dist'));
