@@ -2,9 +2,9 @@
 
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
+var rev = require('gulp-rev');
 
 //gulp.task('concat', function(){
 //    
@@ -50,9 +50,19 @@ gulp.task('lint-js', function(){
     gulp.src([         
         'js/app.js'
     ])
+    .pipe(rev())
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['lint-js']);
+gulp.task('build', function(){
+    
+    gulp.src([         
+        'dist/app.js'
+    ])
+    .pipe(rev())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', ['build']);
