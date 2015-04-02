@@ -7,7 +7,10 @@ var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
 var rev = require('gulp-rev');
 var useref= require('gulp-useref');
+var revReplace = require('gulp-rev-replace');
 var del = require('del');
+var filter = require('gulp-filter');
+var csso = require('gulp-csso');
 
 //gulp.task('concat', function(){
 //    
@@ -70,16 +73,21 @@ gulp.task('build', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('useref', ['clean:dist'], function () {
-    var assets = useref.assets();
-    
+gulp.task('build', ['clean:dist'], function () {
+        
+    // Filtre sur les fichiers créés par useref !!
+    var cssFilter = filter(['*.js', '*.css', '!index.html']);
+    //var cssFilter = filter("*.css");    
+    var assetFiles = useref.assets();
+    debugger;
     return gulp.src('src/index.html')
-        .pipe(debug({title: "before assets"}))
-        .pipe(assets)
-        .pipe(debug({title: "before assets restore"}))
-        .pipe(assets.restore())
-        .pipe(debug({title: "before useref"}))
-        .pipe(useref())
+        .pipe(assetFiles)           // Concatène js et css suivant les patterns décrits dans index.html
+        .pipe(assetFiles.restore()) // Annule le filtre pour accéder à 'index.html'
+        .pipe(useref())             // modifie le fichier index.html pour utiliser les css 'compilés'
+        .pipe(cssFilter)            // filtre les css et js
+        .pipe(rev())                // met un n° de révision sur les css et js
+        .pipe(cssFilter.restore())  // Annule le filtre pour accéder à 'index.html'
+        .pipe(revReplace())
         .pipe(gulp.dest('dist'));
 });
 
