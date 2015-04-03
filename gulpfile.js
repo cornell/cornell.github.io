@@ -10,7 +10,13 @@ var useref= require('gulp-useref');
 var revReplace = require('gulp-rev-replace');
 var del = require('del');
 var filter = require('gulp-filter');
+var gulpif = require('gulp-if');
 var csso = require('gulp-csso');
+var cssClean = require('gulp-minify-css');
+var source = require('vinyl-source-stream');
+var buffer = require('gulp-buffer');
+var browserify = require('browserify');
+var transform = require('vinyl-transform');
 
 //gulp.task('concat', function(){
 //    
@@ -73,20 +79,88 @@ gulp.task('build', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', ['clean:dist'], function () {
+gulp.task('build:js2', function () {
+  // set up the browserify instance on a task basis
+  var b = browserify();
+  // transform regular node stream to gulp (buffered vinyl) stream
+  var browserified = transform(function(filename) {
+    b.add(filename);
+    return b.bundle();
+  });
+
+  return gulp.src('./src/js/main.js')
+    .pipe(browserified)/*
+    .pipe(sourcemaps.init({loadMaps: true}))
+        // Add transformation tasks to the pipeline here.
+        .pipe(uglify())
+        .on('error', gutil.log)
+    .pipe(sourcemaps.write('./'))*/
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('build:js', ['clean:dist'], function(){
+    
+return browserify('./src/js/main.js')
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(buffer())
+        .pipe(rev())
+        .pipe(gulp.dest('dist'))
+});
+
+gulp.task('build:css', ['clean:dist'], function () {
         
+    // set up the browserify instance on a task basis
+    var b = browserify();
+    // transform regular node stream to gulp (buffered vinyl) stream
+    var browserified = transform(function(filename) {
+        b.add(filename);
+        return b.bundle();
+    });    
+    
     // Filtre sur les fichiers créés par useref !!
-    var cssFilter = filter(['*.js', '*.css', '!index.html']);
-    //var cssFilter = filter("*.css");    
+    var jsAndcssFiles = filter(['*.js', '*.css', '!index.html']);
+    var jsFiles = filter(['*.js']);
+    var cssFiles = filter(['*.css']);
     var assetFiles = useref.assets();
     debugger;
     return gulp.src('src/index.html')
-        .pipe(assetFiles)           // Concatène js et css suivant les patterns décrits dans index.html
-        .pipe(assetFiles.restore()) // Annule le filtre pour accéder à 'index.html'
+        .pipe(assetFiles)           // Concatène js et css suivant les patterns décrits dans index.html        
+        .pipe(debug())
+        .pipe(gulpif('*.css', cssClean()))            // filtre les css
+        .pipe(assetFiles.restore()) // Annule le filtre pour accéder à 'index.html'        
+//        .pipe(jsFiles())
+//        .pipe(browserified)
+//        .pipe(source('app.js'))
+//        .pipe(buffer())
+//        .pipe(jsFiles.restore())
+        .pipe(jsAndcssFiles)
+        .pipe(rev())               // met un n° de révision sur les css et js
+        .pipe(jsAndcssFiles.restore())  // Annule le filtre pour accéder à 'index.html'
         .pipe(useref())             // modifie le fichier index.html pour utiliser les css 'compilés'
-        .pipe(cssFilter)            // filtre les css et js
-        .pipe(rev())                // met un n° de révision sur les css et js
-        .pipe(cssFilter.restore())  // Annule le filtre pour accéder à 'index.html'
+        .pipe(revReplace())
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('build', ['build:js', 'build:css'], function () {
+        
+    // Filtre sur les fichiers créés par useref !!
+    var jsAndcssFiles = filter(['*.js', '*.css', '!index.html']);
+    var jsFiles = filter(['*.js']);
+    var cssFiles = filter(['*.css']);
+    var assetFiles = useref.assets();
+    debugger;
+    return gulp.src('src/index.html')
+        .pipe(assetFiles)           // Concatène js et css suivant les patterns décrits dans index.html        
+        .pipe(debug())
+        .pipe(gulpif('*.css', cssClean()))            // filtre les css
+        .pipe(assetFiles.restore()) // Annule le filtre pour accéder à 'index.html'        
+        .pipe(jsAndcssFiles)
+        .pipe(rev())               // met un n° de révision sur les css et js
+        .pipe(jsAndcssFiles.restore())  // Annule le filtre pour accéder à 'index.html'
+        .pipe(useref())             // modifie le fichier index.html pour utiliser les css 'compilés'
         .pipe(revReplace())
         .pipe(gulp.dest('dist'));
 });
