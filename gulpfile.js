@@ -17,6 +17,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('gulp-buffer');
 var browserify = require('browserify');
 var transform = require('vinyl-transform');
+var override=require('gulp-rev-css-url');
 
 //gulp.task('concat', function(){
 //    
@@ -79,7 +80,7 @@ gulp.task('build', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build:js2', function () {
+gulp.task('build:js', function () {
   // set up the browserify instance on a task basis
   var b = browserify();
   // transform regular node stream to gulp (buffered vinyl) stream
@@ -100,7 +101,7 @@ gulp.task('build:js2', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build:js', ['clean:dist'], function(){
+gulp.task('build:js2', function(){
     
 return browserify('./src/js/main.js')
         .bundle()
@@ -108,6 +109,11 @@ return browserify('./src/js/main.js')
         .pipe(buffer())
         .pipe(rev())
         .pipe(gulp.dest('dist'))
+        .pipe(rev.manifest({
+            base: './dist2',
+            merge:true
+        }))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('build:css', ['clean:dist'], function () {
@@ -144,22 +150,46 @@ gulp.task('build:css', ['clean:dist'], function () {
         .pipe(gulp.dest('dist'));
 });
 
+gulp.task('build:css2',function () {
+        
+    var cssFiles = [
+        './src/css/*.css'
+    ];
+
+    return gulp.src(cssFiles)
+        .pipe(concat('app.css'))        
+        .pipe(rev())               // met un n° de révision sur les css et js
+        .pipe(gulp.dest('dist'))
+        .pipe(rev.manifest({
+            base: './dist2',
+            merge:true
+        }))
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('build2', ['build:js2','build:css2'], function(){
+   
+    var manifest = gulp.src("dist/rev-manifest.json");
+    
+    gulp.src('src/index.html')
+        .pipe(revReplace({manifest: manifest}))
+        .pipe(gulp.dest('dist'));
+});
+
 gulp.task('build', ['build:js', 'build:css'], function () {
         
     // Filtre sur les fichiers créés par useref !!
     var jsAndcssFiles = filter(['*.js', '*.css', '!index.html']);
     var jsFiles = filter(['*.js']);
-    var cssFiles = filter(['*.css']);
     var assetFiles = useref.assets();
-    debugger;
     return gulp.src('src/index.html')
         .pipe(assetFiles)           // Concatène js et css suivant les patterns décrits dans index.html        
         .pipe(debug())
         .pipe(gulpif('*.css', cssClean()))            // filtre les css
         .pipe(assetFiles.restore()) // Annule le filtre pour accéder à 'index.html'        
-        .pipe(jsAndcssFiles)
+        .pipe(cssFiles)
         .pipe(rev())               // met un n° de révision sur les css et js
-        .pipe(jsAndcssFiles.restore())  // Annule le filtre pour accéder à 'index.html'
+        .pipe(cssFiles.restore())  // Annule le filtre pour accéder à 'index.html'
         .pipe(useref())             // modifie le fichier index.html pour utiliser les css 'compilés'
         .pipe(revReplace())
         .pipe(gulp.dest('dist'));
@@ -167,6 +197,7 @@ gulp.task('build', ['build:js', 'build:css'], function () {
 
 gulp.task('clean:dist', function(cb){
   del([
+      'dist2',
     'dist/index.html',
     // here we use a globbing pattern to match everything inside the `mobile` folder
     'dist/**',
