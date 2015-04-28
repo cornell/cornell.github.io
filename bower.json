@@ -22,5 +22,8 @@
   ],
   "devDependencies": {
     "suit-base": "~0.8.0"
+  },
+  "dependencies": {
+    "mustache": "~2.0.0"
   }
 }
