@@ -2,20 +2,42 @@
     BASE
    ------------------------------------------------------*/
 @font-face {
-    font-family: 'robotoregular';
-    src: url('../font/Roboto-Regular-webfont.ttf') format('truetype');
+    font-family: 'font-regular';
+    /*src: url('../font/Roboto/Roboto-Regular-webfont.ttf') format('truetype');*/
+    src: url('../font/sourcesanspro-regular-webfont.woff2') format('woff2'),
+        url('../font/sourcesanspro-regular-webfont.woff') format('woff'),
+        url('../font/sourcesanspro-regular-webfont.ttf') format('truetype');    
     font-weight: normal;
     font-style: normal;
-
 }
 
+@font-face {
+    font-family: 'font-light';
+    /*src: url('../font/Roboto/Roboto-Regular-webfont.ttf') format('truetype');*/
+    src: url('../font/sourcesanspro-light-webfont.woff2') format('woff2'),
+        url('../font/sourcesanspro-light-webfont.woff') format('woff'),
+        url('../font/sourcesanspro-light-webfont.ttf') format('truetype');    
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'font-semibold';
+    /*src: url('../font/Roboto/Roboto-Regular-webfont.ttf') format('truetype');*/
+    src: url('../font/sourcesanspro-semibold-webfont.woff2') format('woff2'),
+        url('../font/sourcesanspro-semibold-webfont.woff') format('woff'),
+        url('../font/sourcesanspro-semibold-webfont.ttf') format('truetype');    
+    font-weight: normal;
+    font-style: normal;
+}
 
 html, body {
-    font-family: robotoregular;
+    font-family: 'font-regular';
     font-size: 16px;
     line-height: 1.4;
     height: 100%;
-    
+    color: hsl(0, 0%, 30%);
+    background-color: hsl(0, 0%, 96%);
     margin: 0;
     padding: 0;
 }
@@ -41,10 +63,9 @@ p {
     left: 0;
     right: 0;
     height: 66px;
-    
-    line-height: 66px;
+/*    line-height: 66px;*/
     color: #FFF;
-    background-color: #2e7d32;
+    background-color: grey;
 }
 
 .header-logo{
@@ -54,22 +75,104 @@ p {
 }
 
 .title {
-    font-size: 20px
+    font-size: 20px;
+    font-variant: small-caps;
 }
 
 /* --------------------------------------------------------
     $MENU
    ------------------------------------------------------*/
 .menu{
-    float: left;
+    padding-top: 20px;
+    font-variant: small-caps;
+    margin-left: auto;
+    margin-right: auto;    
+    text-align: center;
 }
 
 .menu a {
     padding: : 0 10px;
 }
 
+/*
 .menu a:hover {
     color: #c6ff00;
+}
+*/
+
+.menu-item {
+	display: inline-block;
+	position: relative;
+	padding-bottom: 3px;
+}
+
+.menu-item:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 3px;
+	width: 0px;
+	background: transparent;
+	transition: width .3s ease, background-color .3s ease;
+}
+.menu-item:hover:after {
+	width: 100%;
+	background: lightgray;
+}
+
+/* --------------------------------------------------------
+    $ARTICLE
+   ------------------------------------------------------*/
+.article {
+/*    border: solid 1px;*/
+    background-color: hsl(0,0%,100%);
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;    
+    width: 90%;
+}
+
+.article-titre{
+    font-size: 20px;
+}
+
+.article-date,
+.article-ville,
+.article-lieu{
+    font-size: 14px;
+    color: hsl(0, 0%, 60%);
+}
+
+.article-image{
+    float: left;
+    width: 11%;
+}
+
+.article-date {
+    display: inline-block;
+}
+
+.article-lieu {
+    display: inline-block;
+}
+
+.article-contenu {
+/*    float: left;*/
+    margin-left: 11%;
+}
+
+.truncate {
+/*
+  width: 40%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+*/
+}
+
+.clear {
+    clear: both;
 }
 
 /* --------------------------------------------------------

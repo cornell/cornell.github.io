@@ -5,69 +5,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- build:css base.css -->
     <link rel="stylesheet" href="../vendor/normalize-css/normalize.css">
     <link rel="stylesheet" href="../vendor/suit-base/lib/base.css">
     <link rel="stylesheet" href="css/app.css">
+    <script src="../vendor/mustache/mustache.min.js"></script>
+    <script src="../vendor/jquery/dist/jquery.min.js"></script>
     <!-- endbuild -->
 </head>
     
 <body>
    <header class="header">
         <a href="#" class="header-icon"></a>
-        <a href="#" class="header-logo">MENU</a>   
-        <nav class="menu">
-            <a href="#">Prévention</a>
-            <a href="#">Recherche</a>
-            <a href="#">Formation</a>
-        </nav>
+<!--        <a href="#" class="header-logo">MENU</a>   -->
+        <div class="menu">
+            <a class="menu-item" href="#">prévention</a>
+            <a class="menu-item" href="#">recherche</a>
+            <a class="menu-item" href="#">formation</a>
+        </div>
     </header>
-    
+
+                    
     <div class="site-content">
-        <div class="container">
-            <p class="title">Lorem ipsum dolor sit</p>
-           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores libero eaque minima, id unde numquam, maxime magni quis assumenda dolores repudiandae. Debitis repellendus, veniam dolores eligendi perspiciatis id hic ipsam.
-            </p>
-            <p class="title">Lorem ipsum dolor sit</p>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae illum tempore dignissimos deserunt blanditiis inventore earum ratione vitae deleniti unde expedita neque ab exercitationem error repellendus consequatur, est magnam saepe.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus, placeat qui odio animi natus excepturi obcaecati molestiae quo suscipit. Facere, sapiente quasi error id quo earum. Eos assumenda cumque dolore?
-            </p>
-            <p class="title">Lorem ipsum dolor sit</p>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores molestiae provident exercitationem voluptatem delectus, fugit, ad sint illo repellat voluptate impedit explicabo officiis temporibus iste praesentium, dicta accusantium quae alias?
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore rem sit, numquam odio, quos inventore. Excepturi accusamus quia doloribus explicabo incidunt, dignissimos, maiores porro facere molestias id ipsa, possimus praesentium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam minus asperiores, dolor deserunt ipsum amet dolorem laudantium, nam consequuntur aut aliquam repellendus ratione id, unde officia quam molestiae ex ullam!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores ipsum doloremque quasi error, est accusantium porro ipsa quisquam suscipit temporibus, perferendis aspernatur laudantium dolore commodi sint, neque minus beatae, consequuntur.
-            </p>
-            <p class="title">Lorem ipsum dolor sit</p>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolorem, sequi soluta dignissimos vel, dolorum ea dicta illo similique maxime officiis dolore explicabo quis architecto fugit molestiae reiciendis. Ipsa, cumque.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum vel in nemo adipisci blanditiis quasi totam, fugit, officia perferendis unde, natus nam dolores perspiciatis ipsam aut labore ea omnis temporibus.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolorem, sequi soluta dignissimos vel, dolorum ea dicta illo similique maxime officiis dolore explicabo quis architecto fugit molestiae reiciendis. Ipsa, cumque.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum vel in nemo adipisci blanditiis quasi totam, fugit, officia perferendis unde, natus nam dolores perspiciatis ipsam aut labore ea omnis temporibus.
-            </p>
-            <p class="title">Lorem ipsum dolor sit</p>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis atque expedita debitis tenetur praesentium, vel reprehenderit culpa eveniet in ea tempore totam. Architecto non alias consequuntur quo consequatur, odio odit!
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae quis sint ad, qui eos repellendus pariatur debitis, laudantium hic, nulla sunt. Odio, odit officia, amet maxime delectus culpa architecto inventore!
-            </p>
-            <p class="title">Lorem ipsum dolor sit</p>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus numquam ducimus, nihil iste tenetur. Nihil quaerat a officiis recusandae, iusto ex ipsa excepturi corporis neque, veniam vel officia eligendi voluptatem! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod quas soluta, quibusdam rerum sapiente, quaerat nihil consequuntur doloribus repudiandae amet saepe officia similique. Id qui non facilis, a earum officiis.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolorem, sequi soluta dignissimos vel, dolorum ea dicta illo similique maxime officiis dolore explicabo quis architecto fugit molestiae reiciendis. Ipsa, cumque.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum vel in nemo adipisci blanditiis quasi totam, fugit, officia perferendis unde, natus nam dolores perspiciatis ipsam aut labore ea omnis temporibus.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam dolorem, sequi soluta dignissimos vel, dolorum ea dicta illo similique maxime officiis dolore explicabo quis architecto fugit molestiae reiciendis. Ipsa, cumque.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum vel in nemo adipisci blanditiis quasi totam, fugit, officia perferendis unde, natus nam dolores perspiciatis ipsam aut labore ea omnis temporibus.
-            </p>
-            <p class="title">Lorem ipsum dolor sit</p>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam accusantium dolores amet consequatur, non voluptas, nobis qui dolor explicabo unde temporibus corrupti perferendis. Libero ducimus quibusdam, tempora quasi expedita sapiente! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam sapiente consequuntur dicta vitae distinctio harum quisquam id excepturi ipsa et minima nobis saepe illum quidem nostrum possimus tempora, repellat, quo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis soluta ipsa, sequi commodi fugit est cumque nisi quasi dignissimos, sint error natus, voluptas nobis esse sit labore molestias necessitatibus quia.
-            </p>
+        <div id="container" class="container">
         </div>
     </div>
     
-    <script src="js/app.js"></script>
+    
+    <script id="tmpl-article" type="text/x-template">
+        <div class="article">
+            <div class="article-image"><img src="./img/150x150.gif" alt=""></div>
+            <div class="article-contenu">
+                <div class="article-titre">{{titre}}</div>
+                <span class="article-date">{{dateEvenement}}</span>
+                <span class="article-ville">{{ville}}</span>
+                <div class="article-lieu">{{lieu}}</div>
+                <div class="article-resume truncate">{{&detail}}</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </script>
+<!--    <script src="js/app.js"></script>-->
+    <script>
+    function loadUser() {
+      
+        var data = {
+    "titre": "Sensibilisation à l’apport de l’orthophonie dans le cadre de la presbyacousie",
+    "dateEvenement": "20151103",
+    "departement": "35",
+    "ville": "Laillé",
+    "lieu": "résidence l’arbre d’or",
+    "detail":"<p>Dans le cadre de la Journée Nationale de l'Audition (JNA), une orthophoniste d’A Propos s’est rendue le 11 mars à la résidence \"L'arbre d'or\" à Laillé (35) où l'attendait une trentaine de personnes, venues témoigner de leur malentendance, pour les unes, et s'informer sur les troubles de l'audition liés à l'âge, pour les autres.</p><p>Le rôle de l'orthophoniste pour une meilleure réhabilitation de la compréhension de la parole en accompagnement de l'appareillage a été une véritable découverte pour nombre d'entre elles.</p><p>Il leur a été proposé, pour illustrer l'apport de l'orthophonie, des jeux d'écoute, d'attention auditive focalisée, de lecture labiale et un aperçu des stratégies de communication à mettre en place.</p><p>Ces démonstrations concrètes, proches  de leur vie quotidienne, ont rencontré un franc succès.</p><p>Elles ont convaincu ces personnes que leur baisse d'audition, plutôt qu'être vécue comme une perte, pouvait ouvrir la possibilité, avec l'aide de l'orthophoniste, de faire de nouveaux apprentissages cognitifs, comportementaux, de retrouver suffisamment de confiance en soi pour continuer à participer activement aux activités familiales et sociales et repousser ainsi le spectre de l'isolement et de la dépression.</p>",
+    "publieLe": "20151303",
+    };
+        var template = $('#tmpl-article').html();
+        Mustache.parse(template);   // optional, speeds up future uses
+        var rendered = Mustache.render(template, data);
+        $('#container').html(rendered);
+    }
+    loadUser();
+    </script>
 </body>
 
 </html>
