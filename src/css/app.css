@@ -31,12 +31,56 @@
     font-style: normal;
 }
 
-html, body {
+
+@font-face {
+	font-family: 'icomoon';
+/*	src:url('../fonts/icomoon.eot?-ianfab');*/
+	src:url('../font/icomoon.woff?-ianfab') format('woff'),
+		url('../font/icomoon.ttf?-ianfab') format('truetype');		
+	font-weight: normal;
+	font-style: normal;        
+}
+
+@font-face {
+	font-family: 'awesome';
+/*	src:url('../fonts/icomoon.eot?-ianfab');*/
+	src:url('../font/font-awesome.woff?-ianfab') format('woff'),
+		url('../font/font-awesome.ttf?-ianfab') format('truetype');		
+	font-weight: normal;
+	font-style: normal;        
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'awesome';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+    color: hsl(0, 0%, 55%);
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-location:before {
+	content: "\e947";    
+}
+
+.icon-calendar:before {
+	content: "\e953";
+}
+
+
+html {
     font-family: 'font-regular';
     font-size: 16px;
     line-height: 1.4;
     height: 100%;
-    color: hsl(0, 0%, 30%);
+    color: hsl(0, 0%, 25%);
     background-color: hsl(0, 0%, 96%);
     margin: 0;
     padding: 0;
@@ -124,29 +168,38 @@ p {
     $ARTICLE
    ------------------------------------------------------*/
 .article {
-/*    border: solid 1px;*/
-    background-color: hsl(0,0%,100%);
-    padding: 10px;
-    margin-top: 10px;
+    border: solid 1px hsl(0,0%,88%);
+    background-color: hsl(0,0%,100%);    
+    padding: 25px;
+    margin-top: 25px;
     margin-left: auto;
     margin-right: auto;    
-    width: 90%;
+    width: 88%;
+    cursor: pointer;
 }
 
 .article-titre{
-    font-size: 20px;
+    font-size: 22px;
+    color: hsl(0,0%,25%);
+    line-height: 1.1;
+}
+
+.article-detail {
+    margin-top: 0;
 }
 
 .article-date,
 .article-ville,
 .article-lieu{
     font-size: 14px;
-    color: hsl(0, 0%, 60%);
+    color: hsl(0, 0%, 55%);
 }
 
-.article-image{
-    float: left;
-    width: 11%;
+.article-resume {
+    display: inline-block;
+    color: hsl(0,0%,30%);
+    margin-top: 10px;
+    text-overflow: ellipsis;
 }
 
 .article-date {
@@ -157,22 +210,35 @@ p {
     display: inline-block;
 }
 
-.article-contenu {
-/*    float: left;*/
-    margin-left: 11%;
+.article-lien {
+    font-size: 13px;
 }
 
-.truncate {
-/*
-  width: 40%;
-  white-space: nowrap;
-  overflow: hidden;
+.article-contenu {
+/*    float: left;*/
+/*    margin-left: 11%;*/
+}
+
+.ellipsis {
+/*  white-space: nowrap;*/
   text-overflow: ellipsis;
-*/
+  overflow: hidden;
 }
 
 .clear {
     clear: both;
+}
+
+.u-mlxs {
+    margin-left: 5px;
+}
+
+.u-mls {
+    margin-left: 10px;
+}
+
+.u-mlm {
+    margin-left: 20px;
 }
 
 /* --------------------------------------------------------

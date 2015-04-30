@@ -24,6 +24,7 @@
     "suit-base": "~0.8.0"
   },
   "dependencies": {
-    "mustache": "~2.0.0"
+    "mustache": "~2.0.0",
+    "moment": "~2.10.2"
   }
 }
