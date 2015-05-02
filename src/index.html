@@ -1,86 +1,132 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../vendor/normalize-css/normalize.css">
-    <link rel="stylesheet" href="../vendor/suit-base/lib/base.css">
-    <script src="../vendor/moment/min/moment.min.js"></script>
-    <script src="../vendor/moment/locale/fr.js"></script>
-    <link rel="stylesheet" href="css/app.css">
-    <script src="../vendor/mustache/mustache.min.js"></script>
-    <script src="../vendor/jquery/dist/jquery.min.js"></script>
-    <script src="data/prevention.json"></script>
-    <!-- endbuild -->
-</head>
     
-<body>
-   <header class="header">
-        <a href="#" class="header-icon"></a>
-<!--        <a href="#" class="header-logo">MENU</a>   -->
-        <div class="menu">
-            <a class="menu-item" href="#">prévention</a>
-            <a class="menu-item" href="#">recherche</a>
-            <a class="menu-item" href="#">formation</a>
-        </div>
-    </header>
-
-                    
-    <div class="site-content">
-        <div id="container" class="container">
-        </div>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="../vendor/normalize-css/normalize.css">
+        <link rel="stylesheet" href="../vendor/suit-base/lib/base.css">
+        <script src="../vendor/moment/min/moment.min.js"></script>
+        <script src="../vendor/moment/locale/fr.js"></script>
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <script src="../vendor/mustache/mustache.min.js"></script>
+        <script src="../vendor/jquery/dist/jquery.min.js"></script>
+        <script src="js/menu.js"></script>
+        <script src="data/prevention.json"></script>
+        <!-- endbuild -->
+    </head>
     
-    
-    <script id="tmpl-article" type="text/x-template">
-        {{#.}}
-        <div class="article">
-            <!--<div class="article-image"><img src="./img/150x150.gif" alt=""></div>-->
-            <div class="article-contenu">
-                <a class="article-titre" href="{{url}}" >{{titre}}</a>
-                <div class="article-detail">
-                    <span class="icon-calendar"></span><span class="article-date u-mlxs">{{dateEvenement}}</span>
-                    <span class="icon-location u-mlm"></span><span class="article-ville u-mlxs">{{ville}}</span>
-                 </div>
-                <span class="article-resume ellipsis">{{&resume}}</span>
-                <span class="article-lien">(lire l'article)</span>
+    <body>
+        <section>
+            <div class="tabs tabs-style-linemove">
+                <nav>
+                    <ul>
+                        <li><a href="accueil.html" class="load-content"><span>Accueil</span></a></li>
+                        <li><a href="prevention.html" class="load-content"><span>Prévention</span></a></li>
+                        <li><a href="recherche.html" class="load-content"><span>Recherche</span></a></li>
+                        <li><a href="formation.html" class="load-content"><span>Formation</span></a></li>
+                        <li><a href="contact.html" class="load-content"><span>Contact</span></a></li>
+                    </ul>
+                </nav>
+                <h1 id="title"></h1>
+                <div id="content"></div>
             </div>
-            <div class="clear"></div>
+        </section>
+        <div class="site-content">
+            <div id="container" class="container"></div>
         </div>
-        {{/.}}
-    </script>
-<!--    <script src="js/app.js"></script>-->
-    <script>
-      
-    var getResume = function(texte){
-        return texte.slice(0, 295) + " ...";
-    };
+        <script id="tmpl-article" type="text/x-template">
+            {{#.}}
+            <div class="article">
+                <!--<div class="article-image"><img src="./img/150x150.gif" alt=""></div>-->
+                <a class="article-titre" href="{{url}}">{{titre}}</a>
+                <div class="article-detail">
+                    <span class="icon-calendar"></span>
+                    <span class="article-date u-mlxs">{{dateEvenement}}</span>
+                    <span class="icon-location u-mlm"></span>
+                    <span class="article-ville u-mlxs">{{ville}}</span>
+                </div>
+                <div>
+                    <div class="article-contenu">
+                        <span class="article-resume ellipsis">{{&resume}}</span>
+                        <a class="article-lien" href="#">(lire l'article)</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            {{/.}}
+        </script>
+        <!-- <script src="js/app.js"></script>-->
+        <script>
+            var getResume = function(texte){
+                return texte.slice(0, 295) + " ...";
+            };
+                
+            var formatDate = function (date) {
+                var year = date.slice(0,4)
+                var month = date.slice(4,6)
+                var day = date.slice(6,8)
+                var hour = date.slice(8,10)
+                var minute = date.slice(10,12)
+                return moment(new Date(year,month,day, hour, minute)).format('LL');
+            };
+                
+            function loadTemplate() {
+                var template = $('#tmpl-article').html();
+                Mustache.parse(template);   // optional, speeds up future uses
+                var rendered = Mustache.render(template, prevention);
+                $('#container').html(rendered);
+            }
         
-    var formatDate = function (date) {
-        var year = date.slice(0,4)
-        var month = date.slice(4,6)
-        var day = date.slice(6,8)
-        var hour = date.slice(8,10)
-        var minute = date.slice(10,12)
-        return moment(new Date(year,month,day, hour, minute)).format('LL');
-    };
-        
-    function loadTemplate() {
-        var template = $('#tmpl-article').html();
-        Mustache.parse(template);   // optional, speeds up future uses
-        var rendered = Mustache.render(template, prevention);
-        $('#container').html(rendered);
-    }
+            loadTemplate();
+            $(".article").on('click', function(){
+                window.location = $('.article-titre').attr('href');
+                return false;
+            });
+        </script>
+        <script src="js/menu.js"></script>
+        <script>
+            (function() {
+            
+				[].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+					new TabView( el );
+				});
 
-    loadTemplate();
-    $(".article").on('click', function(){
-        window.location = $('.article-titre').attr('href');
-        return false;
-    });        
-    </script>
-</body>
+//                // content
+//                var navLinks = document.querySelectorAll(".load-content");
+//                var titleElement = document.getElementById("title");
+//                var contentElement = document.getElementById("content");
+//                var updateContent = function(stateObj){
+//                  
+//                      if(stateObj){
+//                          document.title = stateObj.titre;
+//                          titleElement.innerHTML = stateObj.titre;
+//                          contentElement.innerHTML = stateObj.description;
+//                      }
+//                };
+//                for (var i = 0; i < navLinks.length; i++) {
+//                    var element = navLinks[i];
+//                    element.addEventListener("click", function (e) {
+//                       e.preventDefault();
+//                       
+//                        var pageUrl = this.attributes['href'].value;
+//                        var pageData = prevention[0];
+//                        updateContent(pageData);
+//                        history.pushState("pageData", "", pageUrl);
+//                        
+//                    });
+//                }
+//                window.addEventListener('popstate', function (e) {
+//                    updateContent(event.state); 
+//                });
+
+			})();
+                        
+                 
+        </script>
+    </body>
 
 </html>
