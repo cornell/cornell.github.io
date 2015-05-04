@@ -1,4 +1,6 @@
 node_modules
-vendor
-dist
 Thumbs.db
+dist
+vendor
+report
+coverage

@@ -15,7 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/**/*.js'
+      'vendor/moment/min/moment.min.js',
+      'vendor/moment/locale/fr.js',
+      'src/js/viewHelper.js',
+      'test/**/*Spec.js'
     ],
 
 
@@ -27,6 +30,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'src/**/*.js': ['coverage']
     },
 
 
@@ -34,15 +38,20 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['junit','mocha', 'html'],
+    reporters: ['mocha', 'html', 'coverage'],
 
-    junitReporter: {
-      outputFile: 'test/junit-report.xml',
-      suite: ''
-    },
+//    junitReporter: {
+//      outputFile: 'test/junit-report.xml',
+//      suite: ''
+//    },
       
     htmlReporter: {
       outputFile: 'test/units.html'
+    },
+    
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
     },
       
 //    plugins : ['karma-mocha-reporter'],      
