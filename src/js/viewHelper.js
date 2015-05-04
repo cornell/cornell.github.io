@@ -13,7 +13,7 @@
         return texte.slice(0, 295) + " ...";
     };
 
-    var myApp = {};
+    var myApp = myApp || {};
     window.myApp = myApp;
     myApp.formatDate = formatDate;
     window.myApp.getResume = getResume;
