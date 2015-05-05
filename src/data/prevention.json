@@ -1,4 +1,4 @@
-var preventionArticleList = [
+var preventionArticles = [
     {
         "titre": "Fête du livre jeunesse",
         "type": "annonce",
