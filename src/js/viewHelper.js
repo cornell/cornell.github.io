@@ -1,6 +1,6 @@
 (function (window) {
     
-    var formatDate = function (date) {
+    var formatterDate = function (date) {
         var year = date.slice(0, 4)
         var month = date.slice(4, 6)
         var day = date.slice(6, 8)
@@ -13,21 +13,22 @@
         return texte.slice(0, longueur) + " ...";
     };
 
-    var formatData = function (articles) {
+    var formatterArticles = function (articles) {
      
         for (var i = 0; i < articles.length; i++) {
             var article = articles[i];
-            article.dateEvenement = myApp.formatDate(article.dateEvenement);
-            article.resume = myApp.getResume(article.description);
+            console.log(article);
+            article.dateEvenement = formatterDate(article.dateEvenement);
+            article.resume = getResume(295, article.description);
         }
     };
 
     var myApp = window.myApp || {};
     window.myApp = myApp;
     myApp.viewHelper = {
-        formatDate : formatDate,
+        formatterDate : formatterDate,
         getResume : getResume,
-        formatData : formatData
+        formatterArticles : formatterArticles
     };
     
 })(window);

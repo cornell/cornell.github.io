@@ -2,6 +2,15 @@
 // Generated on Sun May 03 2015 22:44:55 GMT+0200 (Paris, Madrid (heure d'été))
 
 module.exports = function(config) {
+    console.log(process.argv);
+    var sourcePreprocessors  = 'coverage';
+    function isDebug(argument) {
+        return argument === '--debug';
+    }
+    if (process.argv.some(isDebug)) {
+        sourcePreprocessors  = [];
+    }
+    
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -30,7 +39,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**/*.js': ['coverage']
+      'src/**/*.js': sourcePreprocessors
     },
 
 
@@ -49,10 +58,10 @@ module.exports = function(config) {
       outputFile: 'test/units.html'
     },
     
-    coverageReporter: {
-      type : 'html',
-      dir : 'coverage/'
-    },
+    coverageReporter: [
+        { type : 'html', dir : 'coverage/' },
+        { type : 'text-summary' }
+    ],
       
 //    plugins : ['karma-mocha-reporter'],      
       

@@ -1,8 +1,7 @@
 /// <reference path="viewHelper.js" />
 
-
 (function (myApp, articles) {
 
-    myApp.formatData(articles);
+    myApp.viewHelper.formatterArticles(articles);
     
 })(myApp, preventionArticles);
