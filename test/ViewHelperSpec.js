@@ -1,6 +1,10 @@
 describe('Formatter les données de type date', function () {
-    it('formatte la date', function () {
+    it('formatte la date quand elle existe', function () {
         expect(myApp.viewHelper.formatterDate('20131504')).toEqual('4 avril 2014');
+    });
+    
+    it('retourne vide quand la date n\'existe pas', function () {
+        expect(myApp.viewHelper.formatterDate(undefined)).toEqual('');
     });
 });
 
@@ -26,8 +30,9 @@ describe('Formatter un article', function () {
         "description": "Table ronde sur les troubles des apprentissages animée par un(e) orthophoniste\nL’association \"Par monts et par livres\" qui organise sa 2° fête du livre jeunesse a sollicité A Propos pour trouver un(e) orthophoniste disposé(e) à animer une table ronde sur les troubles des apprentissages, prévue ce jour là de 15h à 17h\nPublic composé de parents et d’enseignants\nAide logistique fourni par A Propos (préparation, matériel, contrat)\nAlors n’attendez pas, contactez nous !\nRenseignements complémentaires au 06 83 34 73 08",
         "url": "fete_livre_jeunesse_scrignac.html"
     }];
-        var articleFormate = myApp.viewHelper.formatterArticles(articles);
+        myApp.viewHelper.formatterArticles(articles);
         
-        expect('4 avril 2014').toEqual(articleFormate.dateEvenement);
+        expect('6 juillet 2015').toEqual(articles[0].dateEvenement);
+        expect(articles[0].resume).not.toBeNull();
     });
 });

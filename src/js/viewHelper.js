@@ -1,6 +1,9 @@
 (function (window) {
     
     var formatterDate = function (date) {
+        
+        if(date == undefined) return '';
+        
         var year = date.slice(0, 4)
         var month = date.slice(4, 6)
         var day = date.slice(6, 8)
@@ -17,7 +20,6 @@
      
         for (var i = 0; i < articles.length; i++) {
             var article = articles[i];
-            console.log(article);
             article.dateEvenement = formatterDate(article.dateEvenement);
             article.resume = getResume(295, article.description);
         }
