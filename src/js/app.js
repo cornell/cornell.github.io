@@ -12,42 +12,42 @@
         var pages = {
             index: {
                 title: "Accueil",
-                content: articles
+                content: articles,
+                template: "article-resume"
             },
             prevention: {
                 title: "Prévention",
-                content: articles
+                content: articles,
+                template: "article-resume"
             },
             recherche: {
                 title: "Recherche",
-                content: "Je suis lA RECHERCHE"
+                content: articles,
+                template: "article-resume"
             },
             formation: {
                 title: "Formation",
-                content: "Je suis LA FORMATION"
+                content: articles,
+                template: "article-resume"
             },
             contact: {
                 title: "Contact",
-                content: "Je suis lE CONTACT"
+                content: articles,
+                template: "article-resume"
             }
         };            
-        var toto ={};
-        var templates = [];
         
-        var getTemplates = function (templateList) {
-            
-            console.log('templates: ' + templates);
+        var _templates = [];
+        var loadTemplates = function (templateList, whenTemplatesLoaded) {
             
             var templates = [];
             for (var i = 0; i < templateList.length; i++) {
                 var templateName = templateList[i];
                 $.get("templates/" + templateName + ".tmpl.html", function (template) {
-//                    console.log(template);
                     templates[templateName] = template;
-//                    console.log(templates);
+                    whenTemplatesLoaded(templates);
                 });
             }
-            return templates;
         };        
     
         $(".article").on('click', function () {
@@ -58,24 +58,21 @@
         // Update the page content.
         var updateContent = function (stateObj) {
             // Check to make sure that this state object is not null.
-                
             if (stateObj) {
                 document.title = stateObj.title;
                 titleElement.innerHTML = stateObj.title;
                 
-                var template = templates[0];
-                console.log(template);
-                //            var template = templates['article-resume'];
+                var template = _templates[stateObj.template];
                 Mustache.parse(template); // optional, speeds up future uses
                 var rendered = Mustache.render(template, stateObj.content);
                 contentElement.innerHTML = rendered;
             }
         };
-    
        
-        // Update the page content when the popstate event is called.
+        // Update the page content when previous or forward browser keys are clicked.
         window.addEventListener('popstate', function (event) {
-            console.log(event.state);
+            
+//            console.log('postate: ' + event.state);
             updateContent(event.state);
         });
         
@@ -91,26 +88,30 @@
     
                 // Fetch the page data using the URL in the link.
                 var pageURL = this.attributes['href'].value;
-                var pageData = pages[pageURL.split('.')[0]];
-    
+                var controller = pageURL.split('.')[0];
+                var pageData = pages[controller];
+                
                 // Update the title and content.
                 updateContent(pageData);
                 // Create a new history item.
                 history.pushState(pageData, pageData.title, pageURL);
             });
         }        
+        
+        var whenTemplatesLoaded = function(templates){
     
-        //load templates
-        templates = getTemplates(['article-resume']);
-    
-        // Load initial content.
-        updateContent(pages.index);
-    
-        // Update this history event so that the state object contains the data
-        // for the homepage.
-        history.replaceState(pages.index, pages.index.title);
+            _templates = templates;
+            // Load initial content.
+            updateContent(pages.index);
+
+            // Update this history event so that the state object contains the data
+            // for the homepage.
+            history.replaceState(pages.index, pages.index.title);
+        };
+        
+        loadTemplates([pages.index.template], whenTemplatesLoaded);
+                
     };
-    init();
-//    window.onload = init;
+    window.onload = init;
 
 })(myApp, preventionArticles);
