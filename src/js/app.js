@@ -13,7 +13,7 @@
             index: {
                 title: "Accueil",
                 content: articles,
-                template: "article-resume"
+                template: "accueil"
             },
             prevention: {
                 title: "Prévention",
@@ -29,26 +29,48 @@
                 title: "Formation",
                 content: articles,
                 template: "article-resume"
-            },
+            },            
             contact: {
                 title: "Contact",
                 content: articles,
-                template: "article-resume"
+                template: "contact-form"
+            },
+            apropos: {
+                title: "Qui sommes nous ?",
+                content: articles,
+                template: "apropos"
             }
         };            
         
         var _templates = [];
         var loadTemplates = function (templateList, whenTemplatesLoaded) {
-            
+
             var templates = [];
-            for (var i = 0; i < templateList.length; i++) {
-                var templateName = templateList[i];
-                $.get("templates/" + templateName + ".tmpl.html", function (template) {
-                    templates[templateName] = template;
-                    whenTemplatesLoaded(templates);
+            var templateName = "article-resume";
+
+            $.get("templates/" + templateName + ".tmpl.html", function (htmlFragment) {
+                templates[templateName] = htmlFragment;
+                
+                templateName = "contact-form";
+                $.get("templates/" + templateName + ".tmpl.html", function (htmlFragment) {
+                    templates[templateName] = htmlFragment;
+
+                    templateName = "apropos";
+                    $.get("templates/" + templateName + ".tmpl.html", function (htmlFragment) {
+
+                        templates[templateName] = htmlFragment;
+                        
+                        templateName = "accueil";
+                        $.get("templates/" + templateName + ".tmpl.html", function (htmlFragment) {
+
+                            templates[templateName] = htmlFragment;
+                            whenTemplatesLoaded(templates);
+                        });
+                        
+                    });
                 });
-            }
-        };        
+            });
+        };
     
         $(".article").on('click', function () {
             window.location = $('.article-titre').attr('href');

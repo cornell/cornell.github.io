@@ -1,0 +1,103 @@
+.accueilConteneur{
+    background-color: hsl(240, 1%, 34%);
+/*    margin-top: 25px;*/
+/*    margin-top: 25px;*/
+/*    display: table;*/
+/*    margin: auto;*/
+/*    width: 100%;*/
+    text-align: center;
+    position:relative;
+    padding-top: 100px;
+    padding-bottom: 100px
+}
+
+.axe-fond {
+    position:absolute;
+    height: 150px;
+    width: 100%;
+    background-color: white;
+    margin-top: 100px;
+    z-index: -1;
+}
+
+.axePrevention {
+    background-color: hsl(201, 40%, 66%);
+/*    border : 1px solid hsl(201, 40%, 60%)*/
+}
+
+.axeRecherche {
+    background-color: hsl(260, 31%, 72%);
+/*    border: solid 1px hsl(260, 31%, 66%);*/
+}
+
+.axeFormation {
+    background-color: hsl(335, 78%, 68%);
+/*    border-right: solid 1px hsl(335, 78%, 62%);*/
+}
+
+.axePrevention,
+.axeRecherche,
+.axeFormation{
+    display: inline-block;
+    width: 25%;
+    color: white;
+    padding: 25px;
+    vertical-align: top;
+    height: 500px;
+/*    margin: 20px;*/
+    cursor: pointer;
+/*    border: solid 1px lightgray;*/
+    
+}
+
+.axePrevention-detail,
+.axeRecherche-detail,
+.axeFormation-detail{
+    text-align: left;
+}
+
+.axePrevention-detail {
+    text-shadow: 1px 1px 1px hsl(201, 40%, 60%);
+}
+
+.axeRecherche-detail {
+    text-shadow: 1px 1px 1px hsl(260, 31%, 68%);
+}
+
+.axeFormation-detail {
+    text-shadow: 1px 1px 1px hsl(335, 78%, 64%);
+}
+
+.axePrevention-image {
+/*    background-color: hsl(201, 100%, 94%);*/
+/*    border: solid 4px hsl(201, 100%, 80%);*/
+    fill: hsl(201, 40%, 56%);    
+}
+
+
+.axeRecherche-image {
+/*    background-color: hsl(358, 100%, 94%);*/
+/*    border: solid 4px hsl(358, 100%, 80%);*/
+    fill: hsl(260, 31%, 62%);
+}
+
+.axeFormation-image {
+/*    background-color: hsl(122, 100%, 94%);*/
+/*    border: solid 4px hsl(122, 100%, 80%);*/
+    fill: hsl(335, 78%, 58%);
+}
+
+.axePrevention-image,
+.axeRecherche-image,
+.axeFormation-image {
+/*    border-radius: 50%;    */
+/*    fill: white;*/
+    
+}
+
+.axePrevention-titre,
+.axeRecherche-titre,
+.axeFormation-titre{
+    font-size: 30px;
+    font-variant: small-caps;
+}

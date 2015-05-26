@@ -1,273 +1,51 @@
-/* --------------------------------------------------------
-    BASE
-   ------------------------------------------------------*/
-@font-face {
-    font-family: 'font-regular';
-    /*src: url('../font/Roboto/Roboto-Regular-webfont.ttf') format('truetype');*/
-    src: url('../font/sourcesanspro-regular-webfont.woff2') format('woff2'),
-        url('../font/sourcesanspro-regular-webfont.woff') format('woff'),
-        url('../font/sourcesanspro-regular-webfont.ttf') format('truetype');    
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'font-light';
-    /*src: url('../font/Roboto/Roboto-Regular-webfont.ttf') format('truetype');*/
-    src: url('../font/sourcesanspro-light-webfont.woff2') format('woff2'),
-        url('../font/sourcesanspro-light-webfont.woff') format('woff'),
-        url('../font/sourcesanspro-light-webfont.ttf') format('truetype');    
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'font-semibold';
-    /*src: url('../font/Roboto/Roboto-Regular-webfont.ttf') format('truetype');*/
-    src: url('../font/sourcesanspro-semibold-webfont.woff2') format('woff2'),
-        url('../font/sourcesanspro-semibold-webfont.woff') format('woff'),
-        url('../font/sourcesanspro-semibold-webfont.ttf') format('truetype');    
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-@font-face {
-	font-family: 'icomoon';
-/*	src:url('../fonts/icomoon.eot?-ianfab');*/
-	src:url('../font/icomoon.woff?-ianfab') format('woff'),
-		url('../font/icomoon.ttf?-ianfab') format('truetype');		
-	font-weight: normal;
-	font-style: normal;        
-}
-
-@font-face {
-	font-family: 'awesome';
-/*	src:url('../fonts/icomoon.eot?-ianfab');*/
-	src:url('../font/font-awesome.woff?-ianfab') format('woff'),
-		url('../font/font-awesome.ttf?-ianfab') format('truetype');		
-	font-weight: normal;
-	font-style: normal;        
-}
-
-[class^="icon-"], [class*=" icon-"] {
-	font-family: 'awesome';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-    color: hsl(0, 0%, 55%);
-
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-
-.icon-location:before {
-	content: "\e947";    
-}
-
-.icon-calendar:before {
-	content: "\e953";
-}
-
-
 html {
     font-family: 'font-regular';
-    font-size: 16px;
+/*    font-size: 16px;*/
     line-height: 1.4;
-    height: 100%;
-    color: hsl(0, 0%, 25%);
-    background-color: hsl(0, 0%, 96%);
-    margin: 0;
-    padding: 0;
+/*    margin: 30px;*/
 }
 
+/*
 a {
     text-decoration: none;
     color: inherit;
 }
-
-/*a:hover {
-    text-decoration: underline;
-}*/
-
-.site-content {
-    padding-top: 66px;
-}
-
-p {
-    margin: 1em 0;
-}
-/* --------------------------------------------------------
-    $HEADER
-   ------------------------------------------------------*/
-
-.header{
-    position: fixed;
-    left: 0;
-    right: 0;
-    height: 66px;
-/*    line-height: 66px;*/
-    color: #FFF;
-    background-color: grey;
-}
-
-.header-logo{
-    font-weight: bold;
-    padding: 0 25px;
-    float: left;
-}
-
-.title {
-    font-size: 20px;
-    font-variant: small-caps;
-}
-
-/* --------------------------------------------------------
-    $MENU
-   ------------------------------------------------------*/
-.menu{
-    padding-top: 20px;
-/*    font-variant: small-caps;*/
-    margin-left: auto;
-    margin-right: auto;    
-    text-align: center;
-    font-family: 'font-semibold';
-    font-size: 20px;
-}
-
-.menu a {
-    padding: 0 10px;
-}
-
-/*
-.menu a:hover {
-    color: #c6ff00;
-}
 */
-
-.menu-item {
-	display: inline-block;
-	position: relative;
-	padding-bottom: 3px;
-}
-
-.menu-item:after {
-	content: '';
-	display: block;
-	margin: auto;
-	height: 3px;
-	width: 0px;
-	background: transparent;
-	transition: width .3s ease, background-color .3s ease;
-}
-.menu-item:hover:after {
-	width: 100%;
-	background: lightgray;
-}
-
-/* --------------------------------------------------------
-    $ARTICLE
-   ------------------------------------------------------*/
-.article {
-    border: solid 1px hsl(0,0%,88%);
-    background-color: hsl(0,0%,100%);    
-    padding: 25px;
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;    
-    width: 88%;
-    cursor: pointer;
-}
-
-.article-titre{
-    font-size: 22px;
-    color: hsl(0,0%,25%);
-    line-height: 1.1;
-}
-
-.article-detail {
-    margin-top: 0;
-}
-
-.article-date,
-.article-ville,
-.article-lieu{
-    font-size: 14px;
-    color: hsl(0, 0%, 55%);
-}
-
-.article-contenu {
-    margin-top: 10px;
-}
-
-.article-resume {
-    color: hsl(0,0%,30%);
-    margin-top: 10px;
-    text-overflow: ellipsis;
-}
-
-.article-date {
-    display: inline-block;
-}
-
-.article-lieu {
-    display: inline-block;
-}
-
-.article-lien {
-    font-size: 13px;
-}
-
-.ellipsis {
-/*  white-space: nowrap;*/
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
 
 .clear {
     clear: both;
 }
 
-.u-mlxs {
-    margin-left: 5px;
+.axePrevention-contenu{
+    display: inline-block;
+    vertical-align: top;
 }
 
-.u-mls {
-    margin-left: 10px;
+.axePrevention-image{
+    fill: white;
+    display: inline-block;
 }
 
-.u-mlm {
-    margin-left: 20px;
+.axePrevention {
+    background-color: hsl(102, 36%, 49%);
+    color: white;
+    padding: 20px;    
 }
 
-/* --------------------------------------------------------
-    $RESPONSIVE
-   ------------------------------------------------------*/
-@media only screen and (max-width: 750px) {
-    
-    .header-icon {
-        position: relative;
-        display: block;
-        float: left;
-        width: 35px;
-        height: 50px;
-        cursor: pointer;
-    }
-    
-    .header-icon:after{
-        content:'';
-        position: absolute;
-        display: block;
-        width: 1rem;
-        height: 0;
-        box-shadow: 0 10px 0 1px;
-    }
+.axeRecherche {
+    background-color: hsl(31, 78%, 56%);
+    color: white;
+    padding: 20px;
 }
 
-/*@media only screen and (max-width: )*/
+.axeFormation {
+    background-color: hsl(213, 32%, 51%);
+    color: white;
+    padding: 20px;
+}
 
+.axePrevention-titre,
+.axeRecherhce-titre,
+.axeFormation-titre {
+    font-size: 1.6em;
+}

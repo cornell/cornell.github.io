@@ -45,8 +45,8 @@
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap;
-	line-height: 2.5;
+	white-space: nowrap;	
+    height: 60px;
 }
 
 .tabs nav a span {
@@ -70,7 +70,7 @@
 .content-wrap section {
 	display: none;
 	margin: 0 auto;
-	padding: 1em;
+/*	padding: 1em;*/
 	max-width: 1200px;
 	text-align: center;
 }
@@ -95,7 +95,7 @@
 /*****************************/
 
 .tabs-style-linemove nav {
-	background: hsl(0,0%,60%);
+	background: hsl(0,0%,100%);
 }
 
 .tabs-style-linemove nav li:last-child::before {
@@ -105,38 +105,86 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background: white;
+	background: hsl(0,0%,30%);
 	transition: transform 0.3s;
 }
 
 .tabs-style-linemove nav li:first-child.tab-current ~ li:last-child::before {
-	transform: translate3d(-400%,0,0);
+	transform: translate3d(-500%,0,0);
 }
 
 .tabs-style-linemove nav li:nth-child(2).tab-current ~ li:last-child::before {
-	transform: translate3d(-300%,0,0);
+	transform: translate3d(-400%,0,0);
 }
 
 .tabs-style-linemove nav li:nth-child(3).tab-current ~ li:last-child::before {
-	transform: translate3d(-200%,0,0);
+	transform: translate3d(-300%,0,0);
 }
 
 .tabs-style-linemove nav li:nth-child(4).tab-current ~ li:last-child::before {
+	transform: translate3d(-200%,0,0);
+}
+
+.tabs-style-linemove nav li:nth-child(5).tab-current ~ li:last-child::before {
 	transform: translate3d(-100%,0,0);
 }
 
 .tabs-style-linemove nav a {
 	padding: 1em 0;
-	color: hsl(0,0%,85%);
-	line-height: 1;
+	color: hsl(0,0%,20%);
+	line-height: 1.8em;
 	transition: color 0.3s, transform 0.3s;
 }
 
 .tabs-style-linemove nav li.tab-current a {
-	color: white;
+	color: hsl(0,0%,20%);
 /*	transform: translate3d(0,8px,0);*/
 }
 
 .tabs-style-linemove nav a span {
 	font-weight: 700;
+}
+
+
+/* --------------------------------------------------------
+    $MENU
+   ------------------------------------------------------*/
+.menu{
+    padding-top: 20px;
+/*    font-variant: small-caps;*/
+    margin-left: auto;
+    margin-right: auto;    
+    text-align: center;
+    font-family: 'font-semibold';
+    font-size: 20px;
+}
+
+.menu a {
+    padding: 0 10px;
+}
+
+/*
+.menu a:hover {
+    color: #c6ff00;
+}
+*/
+
+.menu-item {
+	display: inline-block;
+	position: relative;
+	padding-bottom: 3px;
+}
+
+.menu-item:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 3px;
+	width: 0px;
+	background: transparent;
+	transition: width .3s ease, background-color .3s ease;
+}
+.menu-item:hover:after {
+	width: 100%;
+	background: lightgray;
 }

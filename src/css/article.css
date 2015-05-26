@@ -1,0 +1,79 @@
+/* --------------------------------------------------------
+    $ARTICLE
+   ------------------------------------------------------*/
+.article,
+.membreBureau {
+    border: solid 1px hsl(0,0%,88%);
+    background-color: hsl(0,0%,100%);    
+    padding-top: 20px;
+    padding-left: 25px;
+    padding-left: 25px;
+    padding-bottom: 20px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;    
+    width: 88%;
+    cursor: pointer;
+}
+
+.article-titre,
+.membreBureau-fonction{
+    font-size: 22px;
+    color: hsl(0,0%,25%);
+    line-height: 1.1;
+}
+
+.article-detail {
+    margin-top: 0;
+}
+
+.article-date,
+.article-ville,
+.article-lieu{
+    font-size: 14px;
+    color: hsl(0, 0%, 55%);
+}
+
+.article-contenu {
+    margin-top: 10px;
+}
+
+.article-resume {
+    color: hsl(0,0%,30%);
+    margin-top: 10px;
+    text-overflow: ellipsis;
+}
+
+.article-date {
+    display: inline-block;
+}
+
+.article-lieu {
+    display: inline-block;
+}
+
+.article-lien {
+    font-size: 13px;
+}
+
+.ellipsis {
+/*  white-space: nowrap;*/
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.clear {
+    clear: both;
+}
+
+.u-mlxs {
+    margin-left: 5px;
+}
+
+.u-mls {
+    margin-left: 10px;
+}
+
+.u-mlm {
+    margin-left: 20px;
+}
