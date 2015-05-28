@@ -21,7 +21,7 @@
         for (var i = 0; i < articles.length; i++) {
             var article = articles[i];
             article.dateEvenement = formatterDate(article.dateEvenement);
-            article.resume = getResume(295, article.description);
+            article.resume = getResume(1000, article.description);
         }
     };
 

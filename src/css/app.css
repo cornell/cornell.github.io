@@ -5,31 +5,33 @@ html {
 /*    margin: 30px;*/
 }
 
-/*
 a {
     text-decoration: none;
     color: inherit;
 }
-*/
+
 
 .clear {
     clear: both;
 }
 
-.axePrevention-contenu{
-    display: inline-block;
-    vertical-align: top;
+.axeRecherche-contenu{
+    overflow: hidden;
 }
 
-.axePrevention-image{
+.axePrevention-image,
+.axeRecherche-image,
+.axeFormation-image{
     fill: white;
-    display: inline-block;
+    float: left;
+    width: 80px;
+    height: 80px;
 }
 
 .axePrevention {
     background-color: hsl(102, 36%, 49%);
     color: white;
-    padding: 20px;    
+    padding: 20px;
 }
 
 .axeRecherche {
@@ -45,7 +47,7 @@ a {
 }
 
 .axePrevention-titre,
-.axeRecherhce-titre,
+.axeRecherche-titre,
 .axeFormation-titre {
     font-size: 1.6em;
 }

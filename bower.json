@@ -27,6 +27,7 @@
     "mustache": "~2.0.0",
     "moment": "~2.10.2",
     "jquery": "~2.1.4",
-    "jasmine": "~2.3.0"
+    "jasmine": "~2.3.0",
+    "mithril": "~0.2.0"
   }
 }
