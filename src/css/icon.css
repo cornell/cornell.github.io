@@ -1,13 +1,4 @@
 @font-face {
-	font-family: 'icomoon';
-/*	src:url('../fonts/icomoon.eot?-ianfab');*/
-	src:url('../font/icomoon.woff?-ianfab') format('woff'),
-		url('../font/icomoon.ttf?-ianfab') format('truetype');		
-	font-weight: normal;
-	font-style: normal;        
-}
-
-@font-face {
 	font-family: 'awesome';
 /*	src:url('../fonts/icomoon.eot?-ianfab');*/
 	src:url('../font/font-awesome.woff?-ianfab') format('woff'),
@@ -31,15 +22,15 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-
 .icon-email:before {
 	content: "\f003";
 }
-
 .icon-location:before {
 	content: "\f041";
 }
-
+.icon-angle-right:before {
+	content: "\f105";
+}
 .icon-calendar:before {
 	content: "\f133";
 }

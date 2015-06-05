@@ -12,7 +12,7 @@
     margin-top: 25px;
     margin-left: auto;
     margin-right: auto;    
-    cursor: pointer;
+/*    cursor: pointer;*/
 }
 
 .article-titre,
@@ -35,12 +35,13 @@
 
 .article-contenu {
     margin-top: 10px;
+    position: relative;
 }
 
 .article-resume {
     color: hsl(0,0%,30%);
     margin-top: 10px;
-    text-overflow: ellipsis;
+    margin-right: 25px;
 }
 
 .article-date {
@@ -51,16 +52,27 @@
     display: inline-block;
 }
 
-.article-lien {
-    font-size: 13px;
-}
-
 .ellipsis {
 /*  white-space: nowrap;*/
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
+
+.article-lien {
+    color: #3498db;
+    bottom: 0;
+    float: right;
+    margin-right: 50px;
+}
+
+.article-lien-logo {
+    color: #3498db;
+    margin-top: 2px;
+    display: inline-block;
+    margin-top: 3px;
+    vertical-align: top;
+}
 .clear {
     clear: both;
 }
