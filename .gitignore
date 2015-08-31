@@ -1,6 +1,5 @@
 node_modules
 Thumbs.db
 dist
-vendor
 report
 coverage
